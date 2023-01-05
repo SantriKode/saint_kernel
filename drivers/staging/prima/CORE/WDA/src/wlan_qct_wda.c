@@ -21813,7 +21813,7 @@ void WDA_TransportChannelDebug
     NONE
 
 ===========================================================================*/
-void WDA_TransportKickDxe(void)
+void WDA_TransportKickDxe()
 {
    WDI_TransportKickDxe();
    return;

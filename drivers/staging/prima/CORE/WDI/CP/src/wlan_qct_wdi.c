@@ -31629,7 +31629,7 @@ void WDI_TransportChannelDebug
  @see
  @return none
 */
-void WDI_TransportKickDxe(void)
+void WDI_TransportKickDxe()
 {
    WDTS_ChannelKickDxe();
    return;
