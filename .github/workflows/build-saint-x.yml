@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - name: Checkout kernel source
       uses: actions/checkout@v2
@@ -28,8 +30,16 @@ jobs:
         defconfig: rosy-perf_defconfig
         image: Image.gz-dtb
 
-    - name: Release build
+    - name: Release every tags
       uses: ncipollo/release-action@v1
       with:
+        tags: "*"
+        artifacts: ${{ steps.build.outputs.outfile }}
+        token: ${{ secrets.SAINT_EX }}
+
+    - name: Releases tags
+      uses: ncipollo/release-action@v1
+      with:
+        tags: "Releases"
         artifacts: ${{ steps.build.outputs.outfile }}
         token: ${{ secrets.SAINT_EX }}
