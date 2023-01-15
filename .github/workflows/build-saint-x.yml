@@ -21,15 +21,9 @@ jobs:
       uses: lemniskett/android-kernel-actions@master
       id: build
       env:
-        NAME: Saint-X kernel build
+        NAME: Saint-x-V.1.0
       with:
         arch: arm64
         compiler: proton-clang/master/binutils
         defconfig: rosy-perf_defconfig
         image: Image.gz-dtb
-
-    - name: Release build
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: ${{ steps.build.outputs.outfile }}
-        token: ${{ secrets.GITHUB_TOKEN }}
