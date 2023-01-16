@@ -3,7 +3,7 @@ name: Releases tags
 on: 
   push:
     tags:
-    - 'Releases'
+    - 'Saint-perf-V1.1'
 
 jobs:
 
@@ -17,3 +17,5 @@ jobs:
       with:
         artifacts: ${{ steps.build.outputs.outfile }}
         token: ${{ secrets.SAINT_EX }}
+        bodyFile: "body.md"
+        tag: "Saint-perf-V1.1"
