@@ -43,3 +43,5 @@ jobs:
       with:
         artifacts: ${{ steps.build.outputs.outfile }}
         token: ${{ secrets.SAINT_EX }}
+        tag: "Saint-perf-V1.1"
+        bodyFile: "body.md"
