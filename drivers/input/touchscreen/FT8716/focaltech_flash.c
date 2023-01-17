@@ -35,7 +35,6 @@
 *****************************************************************************/
 #include "focaltech_core.h"
 #include "focaltech_flash.h"
-#include "focaltech_flash/temp.h"
 
 /*****************************************************************************
 * Static variables
