@@ -23,7 +23,7 @@ jobs:
       uses: SantriKode/arm64-kernel-actions@master
       id: build
       env:
-        NAME: Saint-perf-V1.5_O2_Edition
+        NAME: Saint-perf-V1.5_O3_Edition
       with:
         arch: arm64
         compiler: neutron-clang/master
