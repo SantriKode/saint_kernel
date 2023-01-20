@@ -23,23 +23,17 @@ jobs:
       uses: lemniskett/android-kernel-actions@master
       id: build
       env:
-        NAME: Saint-X-V1.5_O2_Editions
+        NAME: Saint-X-V1.5_O3_Editions
       with:
         arch: arm64
         compiler: proton-clang/master/binutils
         defconfig: rosy-perf_defconfig
         image: Image.gz-dtb
 
-    - name: Release every tags
-      uses: ncipollo/release-action@v1
+    - name: Release build
+      uses: appleboy/telegram-action@master
       with:
-        tags: "*"
-        artifacts: ${{ steps.build.outputs.outfile }}
-        token: ${{ secrets.SAINT_EX }}
-
-    - name: Releases tags
-      uses: ncipollo/release-action@v1
-      with:
-        tags: "Releases"
-        artifacts: ${{ steps.build.outputs.outfile }}
-        token: ${{ secrets.SAINT_EX }}
+        to: ${{ secrets.CHANNEL_ID }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        message: Kernel pada ${{ github.repository }} dengan ${{ github.sha }} telah selesai dibuat!
+        document: ${{ steps.build.outputs.outfile }}
