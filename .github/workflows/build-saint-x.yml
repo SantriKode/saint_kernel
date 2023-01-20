@@ -23,7 +23,7 @@ jobs:
       uses: lemniskett/android-kernel-actions@master
       id: build
       env:
-        NAME: Saint-X-V1.4_O3_Editions
+        NAME: Saint-X-V1.5_O2_Editions
       with:
         arch: arm64
         compiler: proton-clang/master/binutils
