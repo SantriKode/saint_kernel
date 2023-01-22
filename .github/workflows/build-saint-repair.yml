@@ -1,0 +1,39 @@
+name: Build saint-repair kernel
+
+on:
+  push:
+    branches: 'perbaikan'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout kernel source
+      uses: actions/checkout@v2
+
+    - name: Checkout zipper
+      uses: actions/checkout@v2
+      with:
+        repository: SantriKode/AnyKranul3
+        path: zipper
+
+    - name: Android kernel build
+      uses: SantriKode/arm64-kernel-actions@master
+      id: build
+      env:
+        NAME: Saint-repair
+      with:
+        arch: arm64
+        compiler: neutron-clang/master
+        defconfig: rosy-perf_defconfig
+        image: Image.gz-dtb
+
+    - name: Release build
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.CHANNEL_ID }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        message: Kernel pada ${{ github.repository }} dengan ${{ github.sha }} telah selesai dibuat!
+        document: ${{ steps.build.outputs.outfile }}
