@@ -872,7 +872,7 @@ int msm_adsp_init_mixer_ctl_pp_event_queue(struct snd_soc_pcm_runtime *rtd)
 	}
 
 	if (kctl->private_data != NULL) {
-		pr_err("%s: kctl_prtd is not NULL at initialization.\n",
+		pr_debug("%s: kctl_prtd is not NULL at initialization.\n",
 			__func__);
 		return -EINVAL;
 	}
